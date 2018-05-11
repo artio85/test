@@ -1,4 +1,3 @@
-var lat,lng;
 var cities = [
 	{	
 		id: 0,
@@ -38,13 +37,11 @@ var cities = [
 	}
 ];
 
-var distance = [];
-var nearestTown;
-
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-    	var lat = position.coords.latitude;
-    	var lng = position.coords.longitude;
+    	distance = [];
+    	lat = position.coords.latitude;
+    	lng = position.coords.longitude;
 
         cities.map(index => {
         	distance[index.id] = (Math.sqrt(Math.pow((index.lat - lat), 2)
@@ -58,6 +55,8 @@ if (navigator.geolocation) {
 } else { 
         console.log("Geolocation is not supported by this browser.");
 }
+
+
 
 
 
